@@ -1,0 +1,29 @@
+Data-Object version 0.003
+============================
+
+This module attempts to provide class style accessors for perl data structures.
+In an attempt to make it easier to traverse said data structures in an OO way.
+
+Currently only Array and Hash structures are handled in any way, all others are returned as is.
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires these other modules and libraries:
+
+  Moose
+
+COPYRIGHT & LICENCE
+
+Copyright (C) 2011 by Jason Fried. All Rights Reserved.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
