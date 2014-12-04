@@ -9,3 +9,15 @@ README.mkdn
 cpanfile
 lib/Data/Object.pm
 t/data/object.t
+t/data/object/deduce.t
+t/data/object/load.t
+t/data/object/type_array.t
+t/data/object/type_code.t
+t/data/object/type_float.t
+t/data/object/type_hash.t
+t/data/object/type_integer.t
+t/data/object/type_number.t
+t/data/object/type_scalar.t
+t/data/object/type_string.t
+t/data/object/type_undef.t
+t/data/object/type_universal.t
