@@ -101,6 +101,8 @@ t/data/object/code/disjoin.t
 t/data/object/code/next.t
 t/data/object/code/rcurry.t
 t/data/object/deduce.t
+t/data/object/deduce_deep.t
+t/data/object/deduce_type.t
 t/data/object/float.t
 t/data/object/float/downto.t
 t/data/object/float/eq.t

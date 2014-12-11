@@ -17,7 +17,7 @@ use overload
     fallback => 1,
 ;
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 sub new {
     my $class = shift;
@@ -54,7 +54,7 @@ Data::Object::Undef - An Undef Object for Perl 5
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -65,7 +65,18 @@ version 0.04
 =head1 DESCRIPTION
 
 Data::Object::Undef provides common methods for operating on Perl 5 undefined
-data.
+data. Undef methods work on undefined values.
+
+=head1 METHODS
+
+=head2 defined
+
+    # given undef
+
+    $undef->defined ? 'Yes' : 'No'; # No
+
+The defined method always returns false. This method returns a
+L<Data::Object::Number> object.
 
 =head1 SEE ALSO
 
@@ -110,6 +121,10 @@ L<Data::Object::Undef>
 =item *
 
 L<Data::Object::Universal>
+
+=item *
+
+L<Data::Object::Autobox>
 
 =back
 

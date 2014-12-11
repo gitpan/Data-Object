@@ -1,6 +1,12 @@
 Changelog for Data-Object
 
-0.04 2014-12-07T21:12:36
+0.05 2014-12-11T20:15:20
+ - Added some initial documentation.
+ - Added deduce_deep function.
+ - Added deduce_type function.
+
+0.04 2014-12-07T21:13:04
+ - v0.04
  - Added overloading and deducing, and other undocumented functionality.
 
 0.03 2014-12-04T04:26:57

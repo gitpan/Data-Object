@@ -6,7 +6,7 @@ use Moo::Role;
 
 with 'Data::Object::Role::Type::Value';
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 requires 'defined';
 requires 'grep';

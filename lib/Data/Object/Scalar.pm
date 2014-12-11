@@ -10,7 +10,7 @@ use Data::Object 'deduce';
 
 with 'Data::Object::Role::Scalar';
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 sub new {
     my $class = shift;
@@ -61,7 +61,7 @@ Data::Object::Scalar - A Scalar Object for Perl 5
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -72,7 +72,64 @@ version 0.04
 =head1 DESCRIPTION
 
 Data::Object::Scalar provides common methods for operating on Perl 5 scalar
-objects.
+objects. Scalar methods work on data that meets the criteria for being a scalar.
+
+=head1 METHODS
+
+=head2 and
+
+    # given 12345;
+
+    $scalar->and(56789); # 56789
+
+    # given 0;
+
+    $scalar->and(56789); # 0
+
+The and method performs a short-circuit logical AND operation using the string
+as the lvalue and the argument as the rvalue and returns the last truthy value
+or false. This method returns a data type object to be determined after
+execution.
+
+=head2 not
+
+    # given 0;
+
+    $scalar->not; # 1
+
+    # given 1;
+
+    $scalar->not; # ''
+
+The not method performs a logical negation of the string. It's the equivalent
+of using bang (!) and return true (1) or false (empty string). This method
+returns a data type object to be determined after execution.
+
+=head2 or
+
+    # given 12345;
+
+    $scalar->or(56789); # 12345
+
+    # given 00000;
+
+    $scalar->or(56789); # 56789
+
+The or method performs a short-circuit logical OR operation using the string
+as the lvalue and the argument as the rvalue and returns the first truthy value.
+This method returns a data type object to be determined after execution.
+
+=head2 xor
+
+    # given 1;
+
+    $scalar->xor(1); # 0
+    $scalar->xor(0); # 1
+
+The xor method performs an exclusive OR operation using the string as the
+lvalue and the argument as the rvalue and returns true if either but not both
+is true. This method returns a data type object to be determined after
+execution.
 
 =head1 SEE ALSO
 
@@ -117,6 +174,10 @@ L<Data::Object::Undef>
 =item *
 
 L<Data::Object::Universal>
+
+=item *
+
+L<Data::Object::Autobox>
 
 =back
 

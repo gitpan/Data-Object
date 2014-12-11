@@ -4,7 +4,7 @@ package Data::Object::Role::Scalar;
 use 5.10.0;
 use Moo::Role;
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 sub and {
     return $_[0] && $_[1];
@@ -36,7 +36,7 @@ Data::Object::Role::Scalar - A Scalar Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -90,6 +90,10 @@ L<Data::Object::Role::Undef>
 =item *
 
 L<Data::Object::Role::Universal>
+
+=item *
+
+L<Data::Object::Autobox>
 
 =back
 

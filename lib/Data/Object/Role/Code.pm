@@ -4,7 +4,7 @@ package Data::Object::Role::Code;
 use 5.10.0;
 use Moo::Role;
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 sub call {
     my ($code, @arguments) = @_;
@@ -54,7 +54,7 @@ Data::Object::Role::Code - A Code Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -108,6 +108,10 @@ L<Data::Object::Role::Undef>
 =item *
 
 L<Data::Object::Role::Universal>
+
+=item *
+
+L<Data::Object::Autobox>
 
 =back
 

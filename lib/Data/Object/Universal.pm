@@ -10,7 +10,7 @@ use Data::Object 'deduce';
 
 with 'Data::Object::Role::Universal';
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 sub new {
     my $class = shift;
@@ -37,7 +37,7 @@ Data::Object::Universal - A Universal Object for Perl 5
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -93,6 +93,10 @@ L<Data::Object::Undef>
 =item *
 
 L<Data::Object::Universal>
+
+=item *
+
+L<Data::Object::Autobox>
 
 =back
 

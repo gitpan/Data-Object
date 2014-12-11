@@ -6,7 +6,7 @@ use Moo::Role;
 
 use Data::Object 'deduce';
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 my $coercable = {
     'UNDEF' => {

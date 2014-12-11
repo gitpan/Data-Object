@@ -4,7 +4,7 @@ package Data::Object::Role::Type::Numeric;
 use 5.10.0;
 use Moo::Role;
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 sub downto {
     my ($integer, $argument) = @_;

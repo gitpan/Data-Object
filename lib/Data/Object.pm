@@ -17,6 +17,8 @@ use Scalar::Util qw(
 
 our @EXPORT_OK = qw(
     deduce
+    deduce_deep
+    deduce_type
     load
     type_array
     type_code
@@ -105,7 +107,7 @@ push @EXPORT_OK, qw(
     isa_value
 );
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 sub load ($) {
     my $class = shift;
@@ -214,6 +216,50 @@ sub deduce ($) {
     return type_undef $scalar;
 }
 
+sub deduce_deep {
+    my @objects = @_;
+
+    for my $object (@objects) {
+        my $type = deduce_type($object);
+
+        if ($type and $type eq 'HASH') {
+            for my $i (keys %$object) {
+                my $val = $object->{$i};
+                $object->{$i} = ref($val) ? deduce_deep($val) : deduce($val);
+            }
+        }
+
+        if ($type and $type eq 'ARRAY') {
+            for (my $i = 0; $i < @$object; $i++) {
+                my $val = $object->[$i];
+                $object->[$i] = ref($val) ? deduce_deep($val) : deduce($val);
+            }
+        }
+    }
+
+    return wantarray ? (@objects) : $objects[0];
+}
+
+sub deduce_type ($) {
+    my $object = deduce shift;
+
+    return 'ARRAY'     if $object->isa('Data::Object::Array');
+    return 'HASH'      if $object->isa('Data::Object::Hash');
+    return 'CODE'      if $object->isa('Data::Object::Code');
+
+    return 'FLOAT'     if $object->isa('Data::Object::Float');
+    return 'NUMBER'    if $object->isa('Data::Object::Number');
+    return 'INTEGER'   if $object->isa('Data::Object::Integer');
+
+    return 'STRING'    if $object->isa('Data::Object::String');
+    return 'SCALAR'    if $object->isa('Data::Object::Scalar');
+
+    return 'UNDEF'     if $object->isa('Data::Object::Undef');
+    return 'UNIVERSAL' if $object->isa('Data::Object::Universal');
+
+    return undef;
+}
+
 {
     no warnings 'once';
     *asa_aref       = \&Types::Standard::assert_ArrayRef;
@@ -252,6 +298,9 @@ sub deduce ($) {
     *asa_undefined  = \&Types::Standard::assert_Undef;
     *asa_val        = \&Types::Standard::assert_Value;
     *asa_value      = \&Types::Standard::assert_Value;
+}
+{
+    no warnings 'once';
     *isa_aref       = \&Types::Standard::is_ArrayRef;
     *isa_arrayref   = \&Types::Standard::is_ArrayRef;
     *isa_bool       = \&Types::Standard::is_Bool;
@@ -304,7 +353,7 @@ Data::Object - Data Type Objects for Perl 5
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -341,6 +390,35 @@ returns the package name of the loaded module.
 
 The deduce function returns a data type object instance based upon the deduced
 type of data provided.
+
+=head2 deduce_deep
+
+    # given {1,2,3,{4,5,6,[-1]}}
+
+    $deep = deduce_deep {1,2,3,{4,5,6,[-1]}}; # produces ...
+
+    # Data::Object::Hash {
+    #     1 => Data::Object::Number ( 2 ),
+    #     3 => Data::Object::Hash {
+    #          4 => Data::Object::Number ( 5 ),
+    #          6 => Data::Object::Array [ Data::Object::Integer ( -1 ) ],
+    #     },
+    # }
+
+The deduce_deep function returns a data type object. If the data provided is
+complex, this function traverses the data converting all nested data to objects.
+Note: Blessed objects are not traversed.
+
+=head2 deduce_type
+
+    # given qr/\w+/;
+
+    $type = deduce_type qr/\w+/; # SCALAR
+
+The deduce_type function returns a data type description for the type of data
+provided, represented as a string in capital letters. Note: This function calls
+L<deduce> on the argument before determining its type which means the argument
+will be promoted to an object as a result.
 
 =head2 type_array
 
@@ -1076,6 +1154,10 @@ L<Data::Object::Undef>
 =item *
 
 L<Data::Object::Universal>
+
+=item *
+
+L<Data::Object::Autobox>
 
 =back
 

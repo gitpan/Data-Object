@@ -6,7 +6,7 @@ use Moo::Role;
 
 use Scalar::Util 'looks_like_number';
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 my $codify = sub {
     return(eval(
@@ -366,7 +366,7 @@ Data::Object::Role::Array - An Array Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -420,6 +420,10 @@ L<Data::Object::Role::Undef>
 =item *
 
 L<Data::Object::Role::Universal>
+
+=item *
+
+L<Data::Object::Autobox>
 
 =back
 
