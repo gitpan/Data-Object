@@ -1,7 +1,7 @@
 # ABSTRACT: A String Object for Perl 5
 package Data::Object::String;
 
-use 5.10.0;
+use 5.010;
 
 use Moo 'with';
 use Scalar::Util 'blessed';
@@ -17,7 +17,7 @@ use overload
     fallback => 1,
 ;
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub new {
     my $class = shift;
@@ -199,7 +199,7 @@ Data::Object::String - A String Object for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

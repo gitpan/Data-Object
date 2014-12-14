@@ -1,12 +1,12 @@
 # ABSTRACT: An Array Object Role for Perl 5
 package Data::Object::Role::Array;
 
-use 5.10.0;
+use 5.010;
 use Moo::Role;
 
 use Scalar::Util 'looks_like_number';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 my $codify = sub {
     return(eval(
@@ -366,7 +366,7 @@ Data::Object::Role::Array - An Array Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

@@ -1,24 +1,24 @@
 # ABSTRACT: Data Type Objects for Perl 5
 package Data::Object;
 
-use 5.10.0;
-
+use 5.010;
 use strict;
 use warnings;
 
 use Carp;
-use Exporter 'import';
 
+use Data::Dumper ();
 use Types::Standard ();
-use Scalar::Util qw(
-    blessed
-    looks_like_number
-);
+
+use Exporter qw(import);
+use Scalar::Util qw(blessed looks_like_number);
 
 our @EXPORT_OK = qw(
     deduce
     deduce_deep
     deduce_type
+    detract
+    detract_deep
     load
     type_array
     type_code
@@ -107,7 +107,7 @@ push @EXPORT_OK, qw(
     isa_value
 );
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub load ($) {
     my $class = shift;
@@ -260,6 +260,54 @@ sub deduce_type ($) {
     return undef;
 }
 
+sub detract ($) {
+    my $object = shift;
+    my $type   = deduce_type $object;
+
+    return $object if !$type and blessed($object);
+    return undef   if !$type;
+
+    return [@$object] if $type eq 'ARRAY';
+    return {%$object} if $type eq 'HASH';
+
+    return $$object   if $type eq 'FLOAT';
+    return $$object   if $type eq 'NUMBER';
+    return $$object   if $type eq 'INTEGER';
+    return $$object   if $type eq 'STRING';
+
+    return $object    if $type eq 'UNIVERSAL';
+    return $object    if $type eq 'SCALAR';
+    return undef      if $type eq 'UNDEF';
+
+    return sub { goto &{$object} } if $type eq 'CODE';
+
+    return undef;
+}
+
+sub detract_deep {
+    my @objects = @_;
+
+    for my $object (@objects) {
+        $object = detract($object);
+
+        if ($object and 'HASH' eq ref $object) {
+            for my $i (keys %$object) {
+                my $val = $object->{$i};
+                $object->{$i} = ref($val) ? detract_deep($val) : detract($val);
+            }
+        }
+
+        if ($object and 'ARRAY' eq ref $object) {
+            for (my $i = 0; $i < @$object; $i++) {
+                my $val = $object->[$i];
+                $object->[$i] = ref($val) ? detract_deep($val) : detract($val);
+            }
+        }
+    }
+
+    return wantarray ? (@objects) : $objects[0];
+}
+
 {
     no warnings 'once';
     *asa_aref       = \&Types::Standard::assert_ArrayRef;
@@ -353,7 +401,7 @@ Data::Object - Data Type Objects for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -361,6 +409,7 @@ version 0.05
 
     my $object = deduce [1..9];
 
+    $object->isa('Data::Object::Array'); # 1
     $object->count; # 9
 
 =head1 DESCRIPTION
@@ -420,6 +469,35 @@ provided, represented as a string in capital letters. Note: This function calls
 L<deduce> on the argument before determining its type which means the argument
 will be promoted to an object as a result.
 
+=head2 detract
+
+    # given bless({1..4}, 'Data::Object::Hash');
+
+    $object = detract $object; # {1..4}
+
+The detract function returns a value of native type, based upon the underlying
+reference of the data type object provided.
+
+=head2 detract_deep
+
+    # given {1,2,3,{4,5,6,[-1, 99, bless({}), sub { 123 }]}};
+
+    my $object = deduce_deep $object;
+    my $revert = detract_deep $object; # produces ...
+
+    # {
+    #     '1' => 2,
+    #     '3' => {
+    #         '4' => 5,
+    #         '6' => [ -1, 99, bless({}, 'main'), sub { ... } ]
+    #       }
+    # }
+
+The detract_deep function returns a value of native type. If the data provided
+is complex, this function traverses the data converting all nested data type
+objects into native values using the objects underlying reference. Note:
+Blessed objects are not traversed.
+
 =head2 type_array
 
     # given [2..5];
@@ -462,9 +540,9 @@ provided data type and can be used to perform operations on the data.
 
 =head2 type_integer
 
-    # given 100;
+    # given -100;
 
-    $object = type_integer 100;
+    $object = type_integer -100;
     $object->isa('Data::Object::Integer');
 
 The type_integer function returns a L<Data::Object::Object> instance which wraps
@@ -472,9 +550,10 @@ the provided data type and can be used to perform operations on the data.
 
 =head2 type_number
 
-    # given "-900";
+    # given 100;
 
-    $object = type_number "-900";
+    $object = type_number 100;
+    $object->isa('Data::Object::Number');
 
 The type_number function returns a L<Data::Object::Number> instance which wraps
 the provided data type and can be used to perform operations on the data.

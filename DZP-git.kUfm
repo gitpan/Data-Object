@@ -1,0 +1,5 @@
+v0.05
+
+ - Added some initial documentation.
+ - Added deduce_deep function.
+ - Added deduce_type function.

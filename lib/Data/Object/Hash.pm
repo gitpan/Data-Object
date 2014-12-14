@@ -1,7 +1,7 @@
 # ABSTRACT: A Hash Object for Perl 5
 package Data::Object::Hash;
 
-use 5.10.0;
+use 5.010;
 
 use Moo 'with';
 use Scalar::Util 'blessed';
@@ -10,7 +10,7 @@ use Data::Object 'deduce';
 
 with 'Data::Object::Role::Hash';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub new {
     my $class = shift;
@@ -199,7 +199,7 @@ Data::Object::Hash - A Hash Object for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -215,6 +215,19 @@ be aware of the methods that modify the array reference itself as opposed to
 returning a new array reference. Unless stated, it may be safe to assume that
 the following methods copy, modify and return new hash references based on their
 function.
+
+=head1 CODIFICATION
+
+Certain methods provided by the this module support codification, a process
+which converts a string argument into code reference which can be used to supply
+a callback to the routine. Codified strings can access its arguments by using
+variable names which correspond to letters in the alphabet which represent the
+position in the argument list. For example:
+
+    $hash->method('$a + $b * $c', 100);
+
+    # given that $a and $b are method-supplied arguments
+    # ... whereas $c is assigned the user-supplied argument, 25
 
 =head1 METHODS
 
@@ -523,19 +536,6 @@ execution.
 
 The values method returns an array reference consisting of the values of the
 elements in the hash. This method returns a L<Data::Object::Array> object.
-
-=head1 CODIFICATION
-
-Certain methods provided by the this module support codification, a process
-which converts a string argument into code reference which can be used to supply
-a callback to the routine. Codified strings can access its arguments by using
-variable names which correspond to letters in the alphabet which represent the
-position in the argument list. For example:
-
-    $hash->method('$a + $b * $c', 100);
-
-    # given that $a and $b are method-supplied arguments
-    # ... whereas $c is assigned the user-supplied argument, 25
 
 =head1 SEE ALSO
 

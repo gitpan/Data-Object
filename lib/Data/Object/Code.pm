@@ -1,7 +1,7 @@
 # ABSTRACT: A Code Object for Perl 5
 package Data::Object::Code;
 
-use 5.10.0;
+use 5.010;
 
 use Moo 'with';
 use Scalar::Util 'blessed';
@@ -10,7 +10,7 @@ use Data::Object 'deduce';
 
 with 'Data::Object::Role::Code';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub new {
     my $class = shift;
@@ -82,7 +82,7 @@ Data::Object::Code - A Code Object for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -94,6 +94,19 @@ version 0.05
 
 Data::Object::Code provides common methods for operating on Perl 5 code
 references. Code methods work on code references.
+
+=head1 CODIFICATION
+
+Certain methods provided by the this module support codification, a process
+which converts a string argument into code reference which can be used to supply
+a callback to the routine. Codified strings can access its arguments by using
+variable names which correspond to letters in the alphabet which represent the
+position in the argument list. For example:
+
+    $hash->method('$a + $b * $c', 100);
+
+    # given that $a and $b are method-supplied arguments
+    # ... whereas $c is assigned the user-supplied argument, 25
 
 =head1 METHODS
 
@@ -187,19 +200,6 @@ call method.
 The rcurry method returns a code reference which executes the code passing it
 the any additional parameters and any arguments when executed. This method
 returns a L<Data::Object::Code> object.
-
-=head1 CODIFICATION
-
-Certain methods provided by the this module support codification, a process
-which converts a string argument into code reference which can be used to supply
-a callback to the routine. Codified strings can access its arguments by using
-variable names which correspond to letters in the alphabet which represent the
-position in the argument list. For example:
-
-    $hash->method('$a + $b * $c', 100);
-
-    # given that $a and $b are method-supplied arguments
-    # ... whereas $c is assigned the user-supplied argument, 25
 
 =head1 SEE ALSO
 

@@ -1,10 +1,10 @@
 # ABSTRACT: An Integer Object Role for Perl 5
 package Data::Object::Role::Integer;
 
-use 5.10.0;
+use 5.010;
 use Moo::Role;
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 1;
 
@@ -20,7 +20,7 @@ Data::Object::Role::Integer - An Integer Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

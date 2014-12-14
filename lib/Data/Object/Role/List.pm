@@ -1,12 +1,12 @@
 # A List Data Type Role for Perl 5
-package Data::Object::Role::Type::List;
+package Data::Object::Role::List;
 
-use 5.10.0;
+use 5.010;
 use Moo::Role;
 
-with 'Data::Object::Role::Type::Value';
+with 'Data::Object::Role::Value';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 requires 'defined';
 requires 'grep';

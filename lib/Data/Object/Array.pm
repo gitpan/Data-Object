@@ -1,7 +1,7 @@
 # ABSTRACT: An Array Object for Perl 5
 package Data::Object::Array;
 
-use 5.10.0;
+use 5.010;
 
 use Moo 'with';
 use Scalar::Util 'blessed';
@@ -10,7 +10,7 @@ use Data::Object 'deduce';
 
 with 'Data::Object::Role::Array';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub new {
     my $class = shift;
@@ -337,7 +337,7 @@ Data::Object::Array - An Array Object for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -353,6 +353,19 @@ should be aware of the methods that modify the array reference itself as opposed
 to returning a new array reference. Unless stated, it may be safe to assume that
 the following methods copy, modify and return new array references based on
 their function.
+
+=head1 CODIFICATION
+
+Certain methods provided by the this module support codification, a process
+which converts a string argument into code reference which can be used to supply
+a callback to the routine. Codified strings can access its arguments by using
+variable names which correspond to letters in the alphabet which represent the
+position in the argument list. For example:
+
+    $array->method('$a + $b * $c', 100);
+
+    # given that $a and $b are method-supplied arguments
+    # ... whereas $c is assigned the user-supplied argument, 25
 
 =head1 METHODS
 
@@ -908,19 +921,6 @@ execution. Note: This method modifies the array.
 The values method returns an array reference consisting of the elements in the
 array. This method essentially copies the content of the array into a new
 container. This method returns a L<Data::Object::Array> object.
-
-=head1 CODIFICATION
-
-Certain methods provided by the this module support codification, a process
-which converts a string argument into code reference which can be used to supply
-a callback to the routine. Codified strings can access its arguments by using
-variable names which correspond to letters in the alphabet which represent the
-position in the argument list. For example:
-
-    $array->method('$a + $b * $c', 100);
-
-    # given that $a and $b are method-supplied arguments
-    # ... whereas $c is assigned the user-supplied argument, 25
 
 =head1 SEE ALSO
 

@@ -1,13 +1,13 @@
 # ABSTRACT: A Hash Object Role for Perl 5
 package Data::Object::Role::Hash;
 
-use 5.10.0;
+use 5.010;
 use Moo::Role;
 
 use Clone 'clone';
 use Scalar::Util 'blessed';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 my $codify = sub {
     return(eval(
@@ -245,7 +245,7 @@ Data::Object::Role::Hash - A Hash Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

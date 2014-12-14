@@ -1,10 +1,10 @@
 # ABSTRACT: A String Object Role for Perl 5
 package Data::Object::Role::String;
 
-use 5.10.0;
+use 5.010;
 use Moo::Role;
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub append {
     return join ' ', @_;
@@ -163,7 +163,7 @@ Data::Object::Role::String - A String Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

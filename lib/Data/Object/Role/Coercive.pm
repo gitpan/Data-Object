@@ -1,12 +1,12 @@
 # A Coercive Data Type Role for Perl 5
-package Data::Object::Role::Type::Coercive;
+package Data::Object::Role::Coercive;
 
-use 5.10.0;
+use 5.010;
 use Moo::Role;
 
 use Data::Object 'deduce';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 my $coercable = {
     'UNDEF' => {

@@ -1,7 +1,7 @@
 # ABSTRACT: A Float Object for Perl 5
 package Data::Object::Float;
 
-use 5.10.0;
+use 5.010;
 
 use Moo 'with';
 use Scalar::Util 'blessed';
@@ -9,7 +9,7 @@ use Types::Standard 'Num';
 use Data::Object 'deduce';
 
 with 'Data::Object::Role::Float';
-with 'Data::Object::Role::Type::Numeric';
+with 'Data::Object::Role::Numeric';
 
 use overload
     'bool'   => \&value,
@@ -18,7 +18,7 @@ use overload
     fallback => 1,
 ;
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub new {
     my $class = shift;
@@ -106,7 +106,7 @@ Data::Object::Float - A Float Object for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

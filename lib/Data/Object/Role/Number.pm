@@ -1,10 +1,10 @@
 # ABSTRACT: A Number Object Role for Perl 5
 package Data::Object::Role::Number;
 
-use 5.10.0;
+use 5.010;
 use Moo::Role;
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub abs {
     my ($number) = @_;
@@ -90,7 +90,7 @@ Data::Object::Role::Number - A Number Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

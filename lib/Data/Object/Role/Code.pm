@@ -1,10 +1,10 @@
 # ABSTRACT: A Code Object Role for Perl 5
 package Data::Object::Role::Code;
 
-use 5.10.0;
+use 5.010;
 use Moo::Role;
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub call {
     my ($code, @arguments) = @_;
@@ -54,7 +54,7 @@ Data::Object::Role::Code - A Code Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

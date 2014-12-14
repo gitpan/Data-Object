@@ -1,7 +1,7 @@
 # ABSTRACT: A Universal Object for Perl 5
 package Data::Object::Universal;
 
-use 5.10.0;
+use 5.010;
 
 use Moo 'with';
 use Scalar::Util 'blessed';
@@ -10,7 +10,7 @@ use Data::Object 'deduce';
 
 with 'Data::Object::Role::Universal';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub new {
     my $class = shift;
@@ -37,7 +37,7 @@ Data::Object::Universal - A Universal Object for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

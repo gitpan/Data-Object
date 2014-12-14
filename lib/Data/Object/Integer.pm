@@ -1,7 +1,7 @@
 # ABSTRACT: An Integer Object for Perl 5
 package Data::Object::Integer;
 
-use 5.10.0;
+use 5.010;
 
 use Moo 'with';
 use Scalar::Util 'blessed';
@@ -9,7 +9,7 @@ use Types::Standard 'Int';
 use Data::Object 'deduce';
 
 with 'Data::Object::Role::Integer';
-with 'Data::Object::Role::Type::Numeric';
+with 'Data::Object::Role::Numeric';
 
 use overload
     'bool'   => \&value,
@@ -18,7 +18,7 @@ use overload
     fallback => 1,
 ;
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub new {
     my $class = shift;
@@ -106,7 +106,7 @@ Data::Object::Integer - An Integer Object for Perl 5
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
