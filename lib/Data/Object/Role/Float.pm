@@ -4,7 +4,7 @@ package Data::Object::Role::Float;
 use 5.010;
 use Moo::Role;
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 1;
 
@@ -20,7 +20,7 @@ Data::Object::Role::Float - A Float Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

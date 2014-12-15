@@ -4,7 +4,7 @@ package Data::Object::Role::Undef;
 use 5.010;
 use Moo::Role;
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 sub defined {
     return 0;
@@ -24,7 +24,7 @@ Data::Object::Role::Undef - An Undef Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

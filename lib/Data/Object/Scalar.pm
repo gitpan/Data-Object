@@ -10,7 +10,7 @@ use Data::Object 'deduce';
 
 with 'Data::Object::Role::Scalar';
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 sub new {
     my $class = shift;
@@ -61,7 +61,7 @@ Data::Object::Scalar - A Scalar Object for Perl 5
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

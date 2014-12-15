@@ -7,7 +7,7 @@ use Moo::Role;
 use Clone 'clone';
 use Scalar::Util 'blessed';
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 my $codify = sub {
     return(eval(
@@ -245,7 +245,7 @@ Data::Object::Role::Hash - A Hash Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

@@ -107,7 +107,7 @@ push @EXPORT_OK, qw(
     isa_value
 );
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 sub load ($) {
     my $class = shift;
@@ -401,7 +401,7 @@ Data::Object - Data Type Objects for Perl 5
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
