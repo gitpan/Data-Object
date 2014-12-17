@@ -7,7 +7,7 @@ use Data::Dumper ();
 
 with 'Data::Object::Role::Defined';
 
-our $VERSION = '0.07'; # VERSION
+our $VERSION = '0.08'; # VERSION
 
 requires 'print';
 requires 'say';

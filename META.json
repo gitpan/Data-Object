@@ -1,0 +1,51 @@
+{
+   "abstract" : "Data Type Objects for Perl 5",
+   "author" : [
+      "Al Newkirk <anewkirk@ana.io>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 5.025, CPAN::Meta::Converter version 2.142690",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Data-Object",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Clone" : "0.37",
+            "Moo" : "1.006001",
+            "Type::Tiny" : "1.000005",
+            "perl" : "v5.10.0"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "perl" : "v5.10.0"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/alnewkirk/Data-Object/issues"
+      },
+      "homepage" : "http://metacpan.org/release/Data-Object/",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/alnewkirk/Data-Object.git",
+         "web" : "https://github.com/alnewkirk/Data-Object"
+      }
+   },
+   "version" : "0.08",
+   "x_authority" : "cpan:AWNCORP"
+}
+

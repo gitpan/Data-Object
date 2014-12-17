@@ -6,19 +6,20 @@ use 5.010;
 use Moo 'with';
 use Scalar::Util 'blessed';
 use Types::Standard 'Int';
-use Data::Object 'deduce';
+use Data::Object 'deduce_deep', 'detract_deep';
 
 with 'Data::Object::Role::Integer';
+with 'Data::Object::Role::Detract';
 with 'Data::Object::Role::Numeric';
 
 use overload
-    'bool'   => \&value,
-    '""'     => \&value,
-    '~~'     => \&value,
+    'bool'   => \&data,
+    '""'     => \&data,
+    '~~'     => \&data,
     fallback => 1,
 ;
 
-our $VERSION = '0.07'; # VERSION
+our $VERSION = '0.08'; # VERSION
 
 sub new {
     my $class = shift;
@@ -27,70 +28,74 @@ sub new {
     $data =~ s/^\+//; # not keen on this but ...
 
     $class = ref($class) || $class;
-    $data  = Int->($data)
-        unless blessed($data) && $data->isa($class);
+    unless (blessed($data) && $data->isa($class)) {
+        $data = Int->($data);
+    }
 
     return bless \$data, $class;
+}
+
+sub data {
+    goto &detract;
+}
+
+sub detract {
+    return detract_deep shift;
 }
 
 around 'downto' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'eq' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'gt' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'gte' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'lt' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'lte' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'ne' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'to' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'upto' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
-
-sub value {
-    my $self = shift;
-    return 0+${$self};
-}
 
 1;
 
@@ -106,7 +111,7 @@ Data::Object::Integer - An Integer Object for Perl 5
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 

@@ -6,26 +6,28 @@ use 5.010;
 use Moo 'with';
 use Scalar::Util 'blessed';
 use Types::Standard 'Str';
-use Data::Object 'deduce';
+use Data::Object 'deduce_deep', 'detract_deep';
 
 with 'Data::Object::Role::String';
+with 'Data::Object::Role::Detract';
 
 use overload
-    'bool'   => \&value,
-    '""'     => \&value,
-    '~~'     => \&value,
+    'bool'   => \&data,
+    '""'     => \&data,
+    '~~'     => \&data,
     fallback => 1,
 ;
 
-our $VERSION = '0.07'; # VERSION
+our $VERSION = '0.08'; # VERSION
 
 sub new {
     my $class = shift;
     my $data  = shift;
 
     $class = ref($class) || $class;
-    $data  = Str->($data)
-        unless blessed($data) && $data->isa($class);
+    unless (blessed($data) && $data->isa($class)) {
+        $data = Str->($data);
+    }
 
     return bless \$data, $class;
 }
@@ -63,19 +65,27 @@ around 'concat' => sub {
 around 'contains' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
+
+sub data {
+    goto &detract;
+}
+
+sub detract {
+    return detract_deep shift;
+}
 
 around 'hex' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'index' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'lc' => sub {
@@ -93,13 +103,13 @@ around 'lcfirst' => sub {
 around 'length' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'lines' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'lowercase' => sub {
@@ -123,7 +133,7 @@ around 'reverse' => sub {
 around 'rindex' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'snakecase' => sub {
@@ -135,7 +145,7 @@ around 'snakecase' => sub {
 around 'split' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
 around 'strip' => sub {
@@ -177,13 +187,8 @@ around 'uppercase' => sub {
 around 'words' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
-
-sub value {
-    my $self = shift;
-    return "${$self}";
-}
 
 1;
 
@@ -199,7 +204,7 @@ Data::Object::String - A String Object for Perl 5
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 

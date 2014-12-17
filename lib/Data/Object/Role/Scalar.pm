@@ -4,7 +4,7 @@ package Data::Object::Role::Scalar;
 use 5.010;
 use Moo::Role;
 
-our $VERSION = '0.07'; # VERSION
+our $VERSION = '0.08'; # VERSION
 
 sub and {
     return $_[0] && $_[1];
@@ -36,7 +36,7 @@ Data::Object::Role::Scalar - A Scalar Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 

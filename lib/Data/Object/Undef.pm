@@ -6,38 +6,44 @@ use 5.010;
 use Moo 'with';
 use Scalar::Util 'blessed';
 use Types::Standard 'Undef';
-use Data::Object 'deduce';
+use Data::Object 'deduce_deep', 'detract_deep';
 
 with 'Data::Object::Role::Undef';
+with 'Data::Object::Role::Detract';
 
 use overload
-    'bool'   => \&value,
-    '""'     => \&value,
-    '~~'     => \&value,
+    'bool'   => \&data,
+    '""'     => \&data,
+    '~~'     => \&data,
     fallback => 1,
 ;
 
-our $VERSION = '0.07'; # VERSION
+our $VERSION = '0.08'; # VERSION
 
 sub new {
     my $class = shift;
     my $data  = shift;
 
     $class = ref($class) || $class;
-    $data  = Undef->($data)
-        unless blessed($data) && $data->isa($class);
+    unless (blessed($data) && $data->isa($class)) {
+        $data = Undef->($data);
+    }
 
     return bless \$data, $class;
+}
+
+sub data {
+    goto &detract;
 }
 
 around 'defined' => sub {
     my ($orig, $self, @args) = @_;
     my $result = $self->$orig(@args);
-    return deduce $result;
+    return scalar deduce_deep $result;
 };
 
-sub value {
-    return undef;
+sub detract {
+    return detract_deep shift;
 }
 
 1;
@@ -54,7 +60,7 @@ Data::Object::Undef - An Undef Object for Perl 5
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
