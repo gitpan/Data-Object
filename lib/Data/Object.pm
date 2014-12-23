@@ -112,7 +112,7 @@ our  @VALIDATION = qw(
     isa_value
 );
 
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 sub load ($) {
     my $class = shift;
@@ -299,11 +299,8 @@ sub detract ($) {
         return undef      if $type eq 'UNDEF';
 
         if ($type eq 'REF') {
-            $type = deduce_type($object = $$object) and goto INSPECT;
-        }
-
-        if ($type eq 'CODE') {
-            return sub { goto &{$object} };
+            $type = deduce_type($object = $$object)
+                and goto INSPECT;
         }
     }
 
@@ -431,7 +428,7 @@ Data::Object - Data Type Objects for Perl 5
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 

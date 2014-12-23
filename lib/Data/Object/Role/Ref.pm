@@ -8,7 +8,7 @@ with 'Data::Object::Role::Defined';
 
 use Scalar::Util ();
 
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 sub refaddr {
     goto &Scalar::Util::refaddr;

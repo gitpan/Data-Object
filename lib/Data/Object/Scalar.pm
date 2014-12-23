@@ -6,28 +6,15 @@ use 5.010;
 use Moo 'with';
 use Scalar::Util 'blessed';
 use Types::Standard 'Defined';
+
 use Data::Object 'deduce_deep', 'detract_deep';
 
+with 'Data::Object::Role::Constructor';
 with 'Data::Object::Role::Scalar';
 with 'Data::Object::Role::Detract';
+with 'Data::Object::Role::Output';
 
-our $VERSION = '0.08'; # VERSION
-
-sub new {
-    my $class = shift;
-    my $data  = shift;
-
-    $class = ref($class) || $class;
-    unless (blessed($data) && $data->isa($class)) {
-        $data = Defined->($data);
-    }
-
-    if (blessed($data) && $data->isa('Regexp') && $^V <= v5.12.0) {
-        $data = do {\(my $q = qr/$data/)};
-    }
-
-    return bless ref($data) ? $data : \$data, $class;
-}
+our $VERSION = '0.09'; # VERSION
 
 around 'and' => sub {
     my ($orig, $self, @args) = @_;
@@ -75,7 +62,7 @@ Data::Object::Scalar - A Scalar Object for Perl 5
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 

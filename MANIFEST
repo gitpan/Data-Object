@@ -20,6 +20,7 @@ lib/Data/Object/Role/Code.pm
 lib/Data/Object/Role/Coercive.pm
 lib/Data/Object/Role/Collection.pm
 lib/Data/Object/Role/Comparison.pm
+lib/Data/Object/Role/Constructor.pm
 lib/Data/Object/Role/Defined.pm
 lib/Data/Object/Role/Detract.pm
 lib/Data/Object/Role/Float.pm
@@ -52,6 +53,7 @@ t/data/object/array/data.t
 t/data/object/array/defined.t
 t/data/object/array/delete.t
 t/data/object/array/detract.t
+t/data/object/array/dump.t
 t/data/object/array/each.t
 t/data/object/array/each_key.t
 t/data/object/array/each_n_values.t
@@ -105,6 +107,7 @@ t/data/object/code/curry.t
 t/data/object/code/data.t
 t/data/object/code/detract.t
 t/data/object/code/disjoin.t
+t/data/object/code/dump.t
 t/data/object/code/next.t
 t/data/object/code/rcurry.t
 t/data/object/deduce.t
@@ -116,6 +119,7 @@ t/data/object/float.t
 t/data/object/float/data.t
 t/data/object/float/detract.t
 t/data/object/float/downto.t
+t/data/object/float/dump.t
 t/data/object/float/eq.t
 t/data/object/float/gt.t
 t/data/object/float/gte.t
@@ -133,6 +137,7 @@ t/data/object/hash/data.t
 t/data/object/hash/defined.t
 t/data/object/hash/delete.t
 t/data/object/hash/detract.t
+t/data/object/hash/dump.t
 t/data/object/hash/each.t
 t/data/object/hash/each_key.t
 t/data/object/hash/each_n_values.t
@@ -160,6 +165,7 @@ t/data/object/integer.t
 t/data/object/integer/data.t
 t/data/object/integer/detract.t
 t/data/object/integer/downto.t
+t/data/object/integer/dump.t
 t/data/object/integer/eq.t
 t/data/object/integer/gt.t
 t/data/object/integer/gte.t
@@ -178,6 +184,7 @@ t/data/object/number/data.t
 t/data/object/number/decr.t
 t/data/object/number/detract.t
 t/data/object/number/downto.t
+t/data/object/number/dump.t
 t/data/object/number/eq.t
 t/data/object/number/exp.t
 t/data/object/number/gt.t
@@ -201,6 +208,7 @@ t/data/object/scalar.t
 t/data/object/scalar/and.t
 t/data/object/scalar/data.t
 t/data/object/scalar/detract.t
+t/data/object/scalar/dump.t
 t/data/object/scalar/not.t
 t/data/object/scalar/or.t
 t/data/object/scalar/xor.t
@@ -213,6 +221,7 @@ t/data/object/string/concat.t
 t/data/object/string/contains.t
 t/data/object/string/data.t
 t/data/object/string/detract.t
+t/data/object/string/dump.t
 t/data/object/string/hex.t
 t/data/object/string/index.t
 t/data/object/string/lc.t
@@ -247,7 +256,9 @@ t/data/object/undef.t
 t/data/object/undef/data.t
 t/data/object/undef/defined.t
 t/data/object/undef/detract.t
+t/data/object/undef/dump.t
 t/data/object/undef/overload.t
 t/data/object/universal.t
 t/data/object/universal/data.t
 t/data/object/universal/detract.t
+t/data/object/universal/dump.t

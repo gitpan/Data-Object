@@ -6,7 +6,7 @@ use Moo::Role;
 
 with 'Data::Object::Role::Item';
 
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 requires 'eq';
 requires 'eqtv';

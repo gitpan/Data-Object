@@ -6,11 +6,13 @@ use 5.010;
 use Moo 'with';
 use Scalar::Util 'blessed';
 use Types::Standard 'Num';
+
 use Data::Object 'deduce_deep', 'detract_deep';
 
 with 'Data::Object::Role::Float';
 with 'Data::Object::Role::Detract';
 with 'Data::Object::Role::Numeric';
+with 'Data::Object::Role::Output';
 
 use overload
     'bool'   => \&data,
@@ -19,7 +21,7 @@ use overload
     fallback => 1,
 ;
 
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 sub new {
     my $class = shift;
@@ -111,7 +113,7 @@ Data::Object::Float - A Float Object for Perl 5
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 

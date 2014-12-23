@@ -6,12 +6,14 @@ use 5.010;
 use Moo 'with';
 use Scalar::Util 'blessed';
 use Types::Standard 'CodeRef';
+
 use Data::Object 'deduce_deep', 'detract_deep';
 
 with 'Data::Object::Role::Code';
 with 'Data::Object::Role::Detract';
+with 'Data::Object::Role::Output';
 
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 sub new {
     my $class = shift;
@@ -92,7 +94,7 @@ Data::Object::Code - A Code Object for Perl 5
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 

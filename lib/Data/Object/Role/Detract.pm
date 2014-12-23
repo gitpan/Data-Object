@@ -6,7 +6,7 @@ use Moo::Role;
 
 with 'Data::Object::Role::Defined';
 
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 requires 'data';
 requires 'detract';
