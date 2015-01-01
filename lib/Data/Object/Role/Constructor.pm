@@ -7,7 +7,7 @@ use Moo::Role;
 use Scalar::Util 'blessed';
 use Types::Standard 'Any';
 
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 sub new {
     my $class = shift;

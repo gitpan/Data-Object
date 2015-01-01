@@ -20,7 +20,7 @@ use overload
     fallback => 1,
 ;
 
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 sub new {
     my $class = shift;
@@ -62,7 +62,7 @@ Data::Object::Undef - An Undef Object for Perl 5
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 

@@ -9,7 +9,7 @@ use Data::Object 'detract_deep';
 
 with 'Data::Object::Role::Defined';
 
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 requires 'print';
 requires 'say';

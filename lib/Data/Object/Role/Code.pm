@@ -4,7 +4,7 @@ package Data::Object::Role::Code;
 use 5.010;
 use Moo::Role;
 
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 sub call {
     my ($code, @arguments) = @_;
@@ -54,7 +54,7 @@ Data::Object::Role::Code - A Code Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 
