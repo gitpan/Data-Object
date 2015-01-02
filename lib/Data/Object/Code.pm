@@ -13,7 +13,7 @@ with 'Data::Object::Role::Code';
 with 'Data::Object::Role::Detract';
 with 'Data::Object::Role::Output';
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 sub new {
     my $class = shift;
@@ -94,7 +94,7 @@ Data::Object::Code - A Code Object for Perl 5
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

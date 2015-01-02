@@ -14,6 +14,7 @@ use Exporter qw(import);
 use Scalar::Util qw(blessed looks_like_number reftype);
 
 our @EXPORT_OK = qw(
+    codify
     data_array
     data_code
     data_float
@@ -42,7 +43,14 @@ our @EXPORT_OK = qw(
     type_universal
 );
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
+
+sub codify {
+    my $code = shift // 'return(@_)';
+    my $vars = sprintf 'my ($%s) = @_;', join ',$', 'a'..'z';
+    my $body = sprintf 'sub { %s do { %s } }', $vars, $code;
+    return (eval $body or die $@);
+};
 
 sub load ($) {
     my $class = shift;
@@ -295,7 +303,7 @@ Data::Object - Data Type Objects for Perl 5
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

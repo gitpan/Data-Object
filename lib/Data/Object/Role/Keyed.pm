@@ -6,6 +6,6 @@ use Moo::Role;
 
 with 'Data::Object::Role::Collection';
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 1;

@@ -21,7 +21,7 @@ use overload
     fallback => 1,
 ;
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 sub new {
     my $class = shift;
@@ -197,7 +197,7 @@ Data::Object::Number - A Number Object for Perl 5
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

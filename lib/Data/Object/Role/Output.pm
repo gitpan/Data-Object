@@ -9,10 +9,7 @@ use Data::Object 'detract_deep';
 
 with 'Data::Object::Role::Defined';
 
-our $VERSION = '0.10'; # VERSION
-
-requires 'print';
-requires 'say';
+our $VERSION = '0.11'; # VERSION
 
 sub dump {
     local $Data::Dumper::Indent    = 0;
@@ -25,20 +22,18 @@ sub dump {
     local $Data::Dumper::Terse     = 1;
     local $Data::Dumper::Useqq     = 1;
 
-    my $result = Data::Dumper::Dumper(
-        detract_deep shift
-    );
+    my $result = Data::Dumper::Dumper(detract_deep(shift));
+       $result =~ s/^"|"$//g;
 
-    $result =~ s/^"|"$//g;
     return $result;
 }
 
 sub print {
-    return CORE::print(shift->dump);
+    return CORE::print(&dump(shift));
 }
 
 sub say {
-    return CORE::print(shift->dump, "\n");
+    return CORE::print(&dump(shift), "\n");
 }
 
 1;

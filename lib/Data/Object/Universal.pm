@@ -11,7 +11,7 @@ with 'Data::Object::Role::Universal';
 with 'Data::Object::Role::Detract';
 with 'Data::Object::Role::Output';
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 sub data {
     goto &detract;
@@ -35,7 +35,7 @@ Data::Object::Universal - A Universal Object for Perl 5
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

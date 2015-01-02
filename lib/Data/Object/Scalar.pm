@@ -14,7 +14,7 @@ with 'Data::Object::Role::Scalar';
 with 'Data::Object::Role::Detract';
 with 'Data::Object::Role::Output';
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 around 'and' => sub {
     my ($orig, $self, @args) = @_;
@@ -62,7 +62,7 @@ Data::Object::Scalar - A Scalar Object for Perl 5
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

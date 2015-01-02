@@ -4,7 +4,9 @@ package Data::Object::Role::Code;
 use 5.010;
 use Moo::Role;
 
-our $VERSION = '0.10'; # VERSION
+use Data::Object 'codify';
+
+our $VERSION = '0.11'; # VERSION
 
 sub call {
     my ($code, @arguments) = @_;
@@ -23,16 +25,19 @@ sub rcurry {
 
 sub compose {
     my ($code, $next, @arguments) = @_;
+    $next = codify $next if !ref $next;
     return curry(sub { $next->($code->(@_)) }, @arguments);
 }
 
 sub disjoin {
     my ($code, $next) = @_;
+    $next = codify $next if !ref $next;
     return sub { $code->(@_) || $next->(@_) };
 }
 
 sub conjoin {
     my ($code, $next) = @_;
+    $next = codify $next if !ref $next;
     return sub { $code->(@_) && $next->(@_) };
 }
 
@@ -54,7 +59,7 @@ Data::Object::Role::Code - A Code Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

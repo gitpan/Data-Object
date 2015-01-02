@@ -4,7 +4,7 @@ package Data::Object::Role::Universal;
 use 5.010;
 use Moo::Role;
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 1;
 
@@ -20,7 +20,7 @@ Data::Object::Role::Universal - A Universal Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 
