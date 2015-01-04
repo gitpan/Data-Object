@@ -7,9 +7,7 @@ use Data::Dumper ();
 
 use Data::Object 'detract_deep';
 
-with 'Data::Object::Role::Defined';
-
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 sub dump {
     local $Data::Dumper::Indent    = 0;

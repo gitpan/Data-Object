@@ -4,8 +4,8 @@ package Data::Object::Role::Keyed;
 use 5.010;
 use Moo::Role;
 
-with 'Data::Object::Role::Collection';
+our $VERSION = '0.12'; # VERSION
 
-our $VERSION = '0.11'; # VERSION
+requires 'invert';
 
 1;

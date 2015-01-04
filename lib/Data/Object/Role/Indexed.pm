@@ -4,9 +4,7 @@ package Data::Object::Role::Indexed;
 use 5.010;
 use Moo::Role;
 
-with 'Data::Object::Role::Collection';
-
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 requires 'slice';
 

@@ -8,10 +8,12 @@ use Data::Object 'detract_deep';
 
 with 'Data::Object::Role::Constructor';
 with 'Data::Object::Role::Universal';
+with 'Data::Object::Role::Defined';
 with 'Data::Object::Role::Detract';
 with 'Data::Object::Role::Output';
+with 'Data::Object::Role::Ref';
 
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 sub data {
     goto &detract;
@@ -35,7 +37,7 @@ Data::Object::Universal - A Universal Object for Perl 5
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 

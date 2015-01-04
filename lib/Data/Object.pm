@@ -43,12 +43,12 @@ our @EXPORT_OK = qw(
     type_universal
 );
 
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
-sub codify {
-    my $code = shift // 'return(@_)';
+sub codify ($) {
+    my $code = shift;
     my $vars = sprintf 'my ($%s) = @_;', join ',$', 'a'..'z';
-    my $body = sprintf 'sub { %s do { %s } }', $vars, $code;
+    my $body = sprintf 'sub { %s do { %s } }', $vars, $code // 'return(@_)';
     return (eval $body or die $@);
 };
 
@@ -303,7 +303,7 @@ Data::Object - Data Type Objects for Perl 5
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 

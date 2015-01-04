@@ -10,10 +10,12 @@ use Types::Standard 'CodeRef';
 use Data::Object 'deduce_deep', 'detract_deep';
 
 with 'Data::Object::Role::Code';
+with 'Data::Object::Role::Defined';
 with 'Data::Object::Role::Detract';
 with 'Data::Object::Role::Output';
+with 'Data::Object::Role::Ref';
 
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 sub new {
     my $class = shift;
@@ -94,7 +96,7 @@ Data::Object::Code - A Code Object for Perl 5
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 

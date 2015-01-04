@@ -4,7 +4,7 @@ package Data::Object::Role::Integer;
 use 5.010;
 use Moo::Role;
 
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 1;
 
@@ -20,7 +20,7 @@ Data::Object::Role::Integer - An Integer Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 

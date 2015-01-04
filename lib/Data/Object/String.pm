@@ -10,6 +10,7 @@ use Types::Standard 'Str';
 use Data::Object 'deduce_deep', 'detract_deep';
 
 with 'Data::Object::Role::String';
+with 'Data::Object::Role::Defined';
 with 'Data::Object::Role::Detract';
 with 'Data::Object::Role::Output';
 
@@ -20,7 +21,7 @@ use overload
     fallback => 1,
 ;
 
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 sub new {
     my $class = shift;
@@ -206,7 +207,7 @@ Data::Object::String - A String Object for Perl 5
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 

@@ -7,7 +7,7 @@ use Moo::Role;
 use Data::Object 'codify';
 use Scalar::Util 'looks_like_number';
 
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 sub all {
     my ($array, $code, @arguments) = @_;
@@ -113,11 +113,12 @@ sub grep {
 }
 
 sub hashify {
-    my ($array) = @_;
+    my ($array, $code, @arguments) = @_;
 
     my $data = {};
+    $code = codify $code // 1 if !ref $code;
     for (CORE::grep { CORE::defined $_ } @$array) {
-        $data->{$_} = 1;
+        $data->{$_} = $code->($_, @arguments);
     }
 
     return $data;
@@ -359,7 +360,7 @@ Data::Object::Role::Array - An Array Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 

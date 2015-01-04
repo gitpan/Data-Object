@@ -6,7 +6,7 @@ use Moo::Role;
 
 use Data::Object 'codify';
 
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 sub call {
     my ($code, @arguments) = @_;
@@ -59,7 +59,7 @@ Data::Object::Role::Code - A Code Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 

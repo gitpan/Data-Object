@@ -4,9 +4,7 @@ package Data::Object::Role::Defined;
 use 5.010;
 use Moo::Role;
 
-with 'Data::Object::Role::Item';
-
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 sub defined {
     return 1

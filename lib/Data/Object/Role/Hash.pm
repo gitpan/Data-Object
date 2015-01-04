@@ -8,7 +8,7 @@ use Clone 'clone';
 use Data::Object 'codify';
 use Scalar::Util 'blessed';
 
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 sub aslice {
     goto &array_slice;
@@ -238,7 +238,7 @@ Data::Object::Role::Hash - A Hash Object Role for Perl 5
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 
